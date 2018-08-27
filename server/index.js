@@ -330,22 +330,12 @@ app.post('/deletecategory', authMiddleware(), (req, res) => {
   })
 })
 
-// get all categories for a given company id
 app.get('/:companyId/categoriesdata', authMiddleware(), (req, res) => {
   let companyId = hashids.decode(req.params.companyId);
   db.fetchCategoriesByCompany(companyId, (categories) => {
     res.send(categories);
   })
 });
-
-// get all articles for a given company id and category id
-// app.get('/:companyId/categories/:categoryId/articlesdata', authMiddleware(), (req, res) => {
-//   let companyId = hashids.decode(req.params.companyId);
-//   let categoryId = req.params.categoryId;
-//   db.fetchArticles({companyId, categoryId}, (articles) => {
-//     res.send(articles);
-//   });
-// });
 
 app.get('/:companyId/articlesfirstlastpg/:per/:categoryId?', authMiddleware(), (req, res) => {
   let companyId = hashids.decode(req.params.companyId);
@@ -360,7 +350,6 @@ app.get('/:companyId/articlesfirstlastpg/:per/:categoryId?', authMiddleware(), (
   }
 });
 
-// get all articles for a given company id
 app.get('/:companyId/articlesdata/:pg/:per/:total/:categoryId?', authMiddleware(), (req, res) => {
   let companyId = hashids.decode(req.params.companyId);
   if(req.params.categoryId) {

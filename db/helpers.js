@@ -277,23 +277,6 @@ var dbHelpers = {
     .then(response => cb(response))
   },
 
-  // fetch all articles for a given companyId and categoryId
-  // fetchArticles: ({companyId, categoryId}, cb) => {
-  //   Article.findAll({
-  //     where: {
-  //       companyId: companyId,
-  //       categoryId: categoryId
-  //     },
-  //     order: [
-  //       ['id', 'DESC']
-  //     ],
-  //     attributes: ['id', 'title', 'description', 'content', 'categoryId', 'companyId']
-  //   })
-  //   .then(results => {
-  //     cb(results);
-  //   })
-  // },
-
   fetchCategoryArticlesFirstLastPg: (limit, categoryId, {companyId}, cb) => {
     let countAndPages = {};
     Article.count({
